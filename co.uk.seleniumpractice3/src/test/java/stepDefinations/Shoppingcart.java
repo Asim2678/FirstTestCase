@@ -1,8 +1,14 @@
 package stepDefinations;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -25,8 +31,8 @@ public class Shoppingcart {
 	@After
 	public void closeBrowser() {
 		
-		driver.close();
-		driver.quit();
+		//driver.close();
+		//driver.quit();
 		
 	}
 
@@ -34,24 +40,40 @@ public class Shoppingcart {
 	public void navigate_to_the(String url) throws Throwable {
 		
 		driver.navigate().to(url);
-		Assert.assertEquals("Welcome", driver.getTitle());
+		Assert.assertEquals("X-Cart Demo store company > Catalog", driver.getTitle());
 	
 	}
 
 
-	@Given("^as a user i Search for a product in search box for \"([^\"]*)\"$")
-	public void searchProduct(String product) throws Throwable {
+	@Given("^As a user I Search for \"([^\"]*)\" in search box$")
+	public void as_a_user_I_Search_for_in_search_box(String product) throws Throwable {
+		
+		Assert.assertTrue(driver.findElement(By.name("substring")).isDisplayed());
+		
+		driver.findElement(By.name("substring")).sendKeys(product);
+		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\\\"form-1533153949209\\\"]/div[2]/button")));
 
+		 
+	    driver.findElement(By.xpath("//*[@id=\"form-1533153949209\"]/div[2]/button")).click();
+
+	
+	
+	
+	
+	    
 	}
 
-	@When("^I add laptop to shopping cart$")
-	public void addProductToCart() throws Throwable {
-
+	@When("^I can search results$")
+	public void i_can_search_results() throws Throwable {
+	    
 	}
 
-	@Then("^I should see the product added to shopping cart$")
-	public void verifyCart() throws Throwable {
-
+	@Then("^I should see the \"([^\"]*)\" in the saerch page$")
+	public void i_should_see_the_in_the_saerch_page(String arg1) throws Throwable {
+	  
 	}
 
 }
