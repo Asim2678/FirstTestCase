@@ -16,11 +16,14 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+<<<<<<< HEAD
 import org.junit.Assert;
 
 import org.junit.Assert;
 
 
+=======
+>>>>>>> 43150d09d510a8b98fad20c4351e151b5d70a4df
 public class Shoppingcart {
 
 	WebDriver driver = null;
